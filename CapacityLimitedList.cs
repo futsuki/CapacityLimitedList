@@ -31,15 +31,15 @@ namespace OptimizedList
 		}
 
 		public T this[int index] {
-            get {
+			get {
 				CheckBounds(index);
 				return GetRaw(index);
-            }
-            set {
+			}
+			set {
 				CheckBounds(index);
 				SetRaw(index, value);
-            }
-        }
+			}
+		}
 
 		public int Count {
 			get {
@@ -52,16 +52,16 @@ namespace OptimizedList
 			}
 		}
 		public void Add(T item)
-        {
+		{
 			if (_count >= 1) BoundsError();
 			var index = _count;
 			SetRaw(index, item);
 			_count += 1;
-        }
+		}
 		public void Clear()
-        {
+		{
 			_count = 0;
-        }
+		}
 		public bool Contains(T item)
 		{
 			return IndexOf(item) != -1;
@@ -76,20 +76,20 @@ namespace OptimizedList
 			return -1;
 		}
 		public void CopyTo(T[] array, int arrayIndex)
-        {
+		{
 			for (var i=0; i<_count;i++) {
 				array[arrayIndex + i] = GetRaw(i);
 			}
-        }
-        public IEnumerator<T> GetEnumerator()
-        {
+		}
+		public IEnumerator<T> GetEnumerator()
+		{
 			for (var i=0; i<_count;i++) {
 				yield return GetRaw(i);
 			}
 		}
 
 		public void Insert(int index, T item)
-        {
+		{
 			if (_count == 1) BoundsError();
 			_count += 1;
 			CheckBounds(index);
@@ -97,7 +97,7 @@ namespace OptimizedList
 				SetRaw(i, GetRaw(i-1));
 			}
 			SetRaw(index, item);
-        }
+		}
 		public bool Remove(T item) {
 			var idx = IndexOf(item);
 			if (idx == -1) return false;
@@ -105,18 +105,18 @@ namespace OptimizedList
 			return true;
 		}
 		public void RemoveAt(int index)
-        {
+		{
 			CheckBounds(index);
 			for (var i = index; i < _count; i++) {
 				SetRaw(i, GetRaw(i+1));
 			}
 			_count -= 1;
-        }
+		}
 
 		IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
+		{
+			return GetEnumerator();
+		}
 	}
 	public struct CapacityLimitedList2<T> : IList<T> {
 		int _count;
@@ -148,15 +148,15 @@ namespace OptimizedList
 		}
 
 		public T this[int index] {
-            get {
+			get {
 				CheckBounds(index);
 				return GetRaw(index);
-            }
-            set {
+			}
+			set {
 				CheckBounds(index);
 				SetRaw(index, value);
-            }
-        }
+			}
+		}
 
 		public int Count {
 			get {
@@ -169,16 +169,16 @@ namespace OptimizedList
 			}
 		}
 		public void Add(T item)
-        {
+		{
 			if (_count >= 2) BoundsError();
 			var index = _count;
 			SetRaw(index, item);
 			_count += 1;
-        }
+		}
 		public void Clear()
-        {
+		{
 			_count = 0;
-        }
+		}
 		public bool Contains(T item)
 		{
 			return IndexOf(item) != -1;
@@ -193,20 +193,20 @@ namespace OptimizedList
 			return -1;
 		}
 		public void CopyTo(T[] array, int arrayIndex)
-        {
+		{
 			for (var i=0; i<_count;i++) {
 				array[arrayIndex + i] = GetRaw(i);
 			}
-        }
-        public IEnumerator<T> GetEnumerator()
-        {
+		}
+		public IEnumerator<T> GetEnumerator()
+		{
 			for (var i=0; i<_count;i++) {
 				yield return GetRaw(i);
 			}
 		}
 
 		public void Insert(int index, T item)
-        {
+		{
 			if (_count == 2) BoundsError();
 			_count += 1;
 			CheckBounds(index);
@@ -214,7 +214,7 @@ namespace OptimizedList
 				SetRaw(i, GetRaw(i-1));
 			}
 			SetRaw(index, item);
-        }
+		}
 		public bool Remove(T item) {
 			var idx = IndexOf(item);
 			if (idx == -1) return false;
@@ -222,18 +222,18 @@ namespace OptimizedList
 			return true;
 		}
 		public void RemoveAt(int index)
-        {
+		{
 			CheckBounds(index);
 			for (var i = index; i < _count; i++) {
 				SetRaw(i, GetRaw(i+1));
 			}
 			_count -= 1;
-        }
+		}
 
 		IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
+		{
+			return GetEnumerator();
+		}
 	}
 	public struct CapacityLimitedList4<T> : IList<T> {
 		int _count;
@@ -271,15 +271,15 @@ namespace OptimizedList
 		}
 
 		public T this[int index] {
-            get {
+			get {
 				CheckBounds(index);
 				return GetRaw(index);
-            }
-            set {
+			}
+			set {
 				CheckBounds(index);
 				SetRaw(index, value);
-            }
-        }
+			}
+		}
 
 		public int Count {
 			get {
@@ -292,16 +292,16 @@ namespace OptimizedList
 			}
 		}
 		public void Add(T item)
-        {
+		{
 			if (_count >= 4) BoundsError();
 			var index = _count;
 			SetRaw(index, item);
 			_count += 1;
-        }
+		}
 		public void Clear()
-        {
+		{
 			_count = 0;
-        }
+		}
 		public bool Contains(T item)
 		{
 			return IndexOf(item) != -1;
@@ -316,20 +316,20 @@ namespace OptimizedList
 			return -1;
 		}
 		public void CopyTo(T[] array, int arrayIndex)
-        {
+		{
 			for (var i=0; i<_count;i++) {
 				array[arrayIndex + i] = GetRaw(i);
 			}
-        }
-        public IEnumerator<T> GetEnumerator()
-        {
+		}
+		public IEnumerator<T> GetEnumerator()
+		{
 			for (var i=0; i<_count;i++) {
 				yield return GetRaw(i);
 			}
 		}
 
 		public void Insert(int index, T item)
-        {
+		{
 			if (_count == 4) BoundsError();
 			_count += 1;
 			CheckBounds(index);
@@ -337,7 +337,7 @@ namespace OptimizedList
 				SetRaw(i, GetRaw(i-1));
 			}
 			SetRaw(index, item);
-        }
+		}
 		public bool Remove(T item) {
 			var idx = IndexOf(item);
 			if (idx == -1) return false;
@@ -345,18 +345,18 @@ namespace OptimizedList
 			return true;
 		}
 		public void RemoveAt(int index)
-        {
+		{
 			CheckBounds(index);
 			for (var i = index; i < _count; i++) {
 				SetRaw(i, GetRaw(i+1));
 			}
 			_count -= 1;
-        }
+		}
 
 		IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
+		{
+			return GetEnumerator();
+		}
 	}
 	public struct CapacityLimitedList8<T> : IList<T> {
 		int _count;
@@ -406,15 +406,15 @@ namespace OptimizedList
 		}
 
 		public T this[int index] {
-            get {
+			get {
 				CheckBounds(index);
 				return GetRaw(index);
-            }
-            set {
+			}
+			set {
 				CheckBounds(index);
 				SetRaw(index, value);
-            }
-        }
+			}
+		}
 
 		public int Count {
 			get {
@@ -427,16 +427,16 @@ namespace OptimizedList
 			}
 		}
 		public void Add(T item)
-        {
+		{
 			if (_count >= 8) BoundsError();
 			var index = _count;
 			SetRaw(index, item);
 			_count += 1;
-        }
+		}
 		public void Clear()
-        {
+		{
 			_count = 0;
-        }
+		}
 		public bool Contains(T item)
 		{
 			return IndexOf(item) != -1;
@@ -451,20 +451,20 @@ namespace OptimizedList
 			return -1;
 		}
 		public void CopyTo(T[] array, int arrayIndex)
-        {
+		{
 			for (var i=0; i<_count;i++) {
 				array[arrayIndex + i] = GetRaw(i);
 			}
-        }
-        public IEnumerator<T> GetEnumerator()
-        {
+		}
+		public IEnumerator<T> GetEnumerator()
+		{
 			for (var i=0; i<_count;i++) {
 				yield return GetRaw(i);
 			}
 		}
 
 		public void Insert(int index, T item)
-        {
+		{
 			if (_count == 8) BoundsError();
 			_count += 1;
 			CheckBounds(index);
@@ -472,7 +472,7 @@ namespace OptimizedList
 				SetRaw(i, GetRaw(i-1));
 			}
 			SetRaw(index, item);
-        }
+		}
 		public bool Remove(T item) {
 			var idx = IndexOf(item);
 			if (idx == -1) return false;
@@ -480,18 +480,18 @@ namespace OptimizedList
 			return true;
 		}
 		public void RemoveAt(int index)
-        {
+		{
 			CheckBounds(index);
 			for (var i = index; i < _count; i++) {
 				SetRaw(i, GetRaw(i+1));
 			}
 			_count -= 1;
-        }
+		}
 
 		IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
+		{
+			return GetEnumerator();
+		}
 	}
 	public struct CapacityLimitedList16<T> : IList<T> {
 		int _count;
@@ -565,15 +565,15 @@ namespace OptimizedList
 		}
 
 		public T this[int index] {
-            get {
+			get {
 				CheckBounds(index);
 				return GetRaw(index);
-            }
-            set {
+			}
+			set {
 				CheckBounds(index);
 				SetRaw(index, value);
-            }
-        }
+			}
+		}
 
 		public int Count {
 			get {
@@ -586,16 +586,16 @@ namespace OptimizedList
 			}
 		}
 		public void Add(T item)
-        {
+		{
 			if (_count >= 16) BoundsError();
 			var index = _count;
 			SetRaw(index, item);
 			_count += 1;
-        }
+		}
 		public void Clear()
-        {
+		{
 			_count = 0;
-        }
+		}
 		public bool Contains(T item)
 		{
 			return IndexOf(item) != -1;
@@ -610,20 +610,20 @@ namespace OptimizedList
 			return -1;
 		}
 		public void CopyTo(T[] array, int arrayIndex)
-        {
+		{
 			for (var i=0; i<_count;i++) {
 				array[arrayIndex + i] = GetRaw(i);
 			}
-        }
-        public IEnumerator<T> GetEnumerator()
-        {
+		}
+		public IEnumerator<T> GetEnumerator()
+		{
 			for (var i=0; i<_count;i++) {
 				yield return GetRaw(i);
 			}
 		}
 
 		public void Insert(int index, T item)
-        {
+		{
 			if (_count == 16) BoundsError();
 			_count += 1;
 			CheckBounds(index);
@@ -631,7 +631,7 @@ namespace OptimizedList
 				SetRaw(i, GetRaw(i-1));
 			}
 			SetRaw(index, item);
-        }
+		}
 		public bool Remove(T item) {
 			var idx = IndexOf(item);
 			if (idx == -1) return false;
@@ -639,18 +639,18 @@ namespace OptimizedList
 			return true;
 		}
 		public void RemoveAt(int index)
-        {
+		{
 			CheckBounds(index);
 			for (var i = index; i < _count; i++) {
 				SetRaw(i, GetRaw(i+1));
 			}
 			_count -= 1;
-        }
+		}
 
 		IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
+		{
+			return GetEnumerator();
+		}
 	}
 	public struct CapacityLimitedList32<T> : IList<T> {
 		int _count;
@@ -772,15 +772,15 @@ namespace OptimizedList
 		}
 
 		public T this[int index] {
-            get {
+			get {
 				CheckBounds(index);
 				return GetRaw(index);
-            }
-            set {
+			}
+			set {
 				CheckBounds(index);
 				SetRaw(index, value);
-            }
-        }
+			}
+		}
 
 		public int Count {
 			get {
@@ -793,16 +793,16 @@ namespace OptimizedList
 			}
 		}
 		public void Add(T item)
-        {
+		{
 			if (_count >= 32) BoundsError();
 			var index = _count;
 			SetRaw(index, item);
 			_count += 1;
-        }
+		}
 		public void Clear()
-        {
+		{
 			_count = 0;
-        }
+		}
 		public bool Contains(T item)
 		{
 			return IndexOf(item) != -1;
@@ -817,20 +817,20 @@ namespace OptimizedList
 			return -1;
 		}
 		public void CopyTo(T[] array, int arrayIndex)
-        {
+		{
 			for (var i=0; i<_count;i++) {
 				array[arrayIndex + i] = GetRaw(i);
 			}
-        }
-        public IEnumerator<T> GetEnumerator()
-        {
+		}
+		public IEnumerator<T> GetEnumerator()
+		{
 			for (var i=0; i<_count;i++) {
 				yield return GetRaw(i);
 			}
 		}
 
 		public void Insert(int index, T item)
-        {
+		{
 			if (_count == 32) BoundsError();
 			_count += 1;
 			CheckBounds(index);
@@ -838,7 +838,7 @@ namespace OptimizedList
 				SetRaw(i, GetRaw(i-1));
 			}
 			SetRaw(index, item);
-        }
+		}
 		public bool Remove(T item) {
 			var idx = IndexOf(item);
 			if (idx == -1) return false;
@@ -846,18 +846,18 @@ namespace OptimizedList
 			return true;
 		}
 		public void RemoveAt(int index)
-        {
+		{
 			CheckBounds(index);
 			for (var i = index; i < _count; i++) {
 				SetRaw(i, GetRaw(i+1));
 			}
 			_count -= 1;
-        }
+		}
 
 		IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
+		{
+			return GetEnumerator();
+		}
 	}
 	public struct CapacityLimitedList64<T> : IList<T> {
 		int _count;
@@ -1075,15 +1075,15 @@ namespace OptimizedList
 		}
 
 		public T this[int index] {
-            get {
+			get {
 				CheckBounds(index);
 				return GetRaw(index);
-            }
-            set {
+			}
+			set {
 				CheckBounds(index);
 				SetRaw(index, value);
-            }
-        }
+			}
+		}
 
 		public int Count {
 			get {
@@ -1096,16 +1096,16 @@ namespace OptimizedList
 			}
 		}
 		public void Add(T item)
-        {
+		{
 			if (_count >= 64) BoundsError();
 			var index = _count;
 			SetRaw(index, item);
 			_count += 1;
-        }
+		}
 		public void Clear()
-        {
+		{
 			_count = 0;
-        }
+		}
 		public bool Contains(T item)
 		{
 			return IndexOf(item) != -1;
@@ -1120,20 +1120,20 @@ namespace OptimizedList
 			return -1;
 		}
 		public void CopyTo(T[] array, int arrayIndex)
-        {
+		{
 			for (var i=0; i<_count;i++) {
 				array[arrayIndex + i] = GetRaw(i);
 			}
-        }
-        public IEnumerator<T> GetEnumerator()
-        {
+		}
+		public IEnumerator<T> GetEnumerator()
+		{
 			for (var i=0; i<_count;i++) {
 				yield return GetRaw(i);
 			}
 		}
 
 		public void Insert(int index, T item)
-        {
+		{
 			if (_count == 64) BoundsError();
 			_count += 1;
 			CheckBounds(index);
@@ -1141,7 +1141,7 @@ namespace OptimizedList
 				SetRaw(i, GetRaw(i-1));
 			}
 			SetRaw(index, item);
-        }
+		}
 		public bool Remove(T item) {
 			var idx = IndexOf(item);
 			if (idx == -1) return false;
@@ -1149,18 +1149,18 @@ namespace OptimizedList
 			return true;
 		}
 		public void RemoveAt(int index)
-        {
+		{
 			CheckBounds(index);
 			for (var i = index; i < _count; i++) {
 				SetRaw(i, GetRaw(i+1));
 			}
 			_count -= 1;
-        }
+		}
 
 		IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
+		{
+			return GetEnumerator();
+		}
 	}
 	public struct CapacityLimitedList128<T> : IList<T> {
 		int _count;
@@ -1570,15 +1570,15 @@ namespace OptimizedList
 		}
 
 		public T this[int index] {
-            get {
+			get {
 				CheckBounds(index);
 				return GetRaw(index);
-            }
-            set {
+			}
+			set {
 				CheckBounds(index);
 				SetRaw(index, value);
-            }
-        }
+			}
+		}
 
 		public int Count {
 			get {
@@ -1591,16 +1591,16 @@ namespace OptimizedList
 			}
 		}
 		public void Add(T item)
-        {
+		{
 			if (_count >= 128) BoundsError();
 			var index = _count;
 			SetRaw(index, item);
 			_count += 1;
-        }
+		}
 		public void Clear()
-        {
+		{
 			_count = 0;
-        }
+		}
 		public bool Contains(T item)
 		{
 			return IndexOf(item) != -1;
@@ -1615,20 +1615,20 @@ namespace OptimizedList
 			return -1;
 		}
 		public void CopyTo(T[] array, int arrayIndex)
-        {
+		{
 			for (var i=0; i<_count;i++) {
 				array[arrayIndex + i] = GetRaw(i);
 			}
-        }
-        public IEnumerator<T> GetEnumerator()
-        {
+		}
+		public IEnumerator<T> GetEnumerator()
+		{
 			for (var i=0; i<_count;i++) {
 				yield return GetRaw(i);
 			}
 		}
 
 		public void Insert(int index, T item)
-        {
+		{
 			if (_count == 128) BoundsError();
 			_count += 1;
 			CheckBounds(index);
@@ -1636,7 +1636,7 @@ namespace OptimizedList
 				SetRaw(i, GetRaw(i-1));
 			}
 			SetRaw(index, item);
-        }
+		}
 		public bool Remove(T item) {
 			var idx = IndexOf(item);
 			if (idx == -1) return false;
@@ -1644,18 +1644,18 @@ namespace OptimizedList
 			return true;
 		}
 		public void RemoveAt(int index)
-        {
+		{
 			CheckBounds(index);
 			for (var i = index; i < _count; i++) {
 				SetRaw(i, GetRaw(i+1));
 			}
 			_count -= 1;
-        }
+		}
 
 		IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
+		{
+			return GetEnumerator();
+		}
 	}
 	public struct CapacityLimitedList256<T> : IList<T> {
 		int _count;
@@ -2449,15 +2449,15 @@ namespace OptimizedList
 		}
 
 		public T this[int index] {
-            get {
+			get {
 				CheckBounds(index);
 				return GetRaw(index);
-            }
-            set {
+			}
+			set {
 				CheckBounds(index);
 				SetRaw(index, value);
-            }
-        }
+			}
+		}
 
 		public int Count {
 			get {
@@ -2470,16 +2470,16 @@ namespace OptimizedList
 			}
 		}
 		public void Add(T item)
-        {
+		{
 			if (_count >= 256) BoundsError();
 			var index = _count;
 			SetRaw(index, item);
 			_count += 1;
-        }
+		}
 		public void Clear()
-        {
+		{
 			_count = 0;
-        }
+		}
 		public bool Contains(T item)
 		{
 			return IndexOf(item) != -1;
@@ -2494,20 +2494,20 @@ namespace OptimizedList
 			return -1;
 		}
 		public void CopyTo(T[] array, int arrayIndex)
-        {
+		{
 			for (var i=0; i<_count;i++) {
 				array[arrayIndex + i] = GetRaw(i);
 			}
-        }
-        public IEnumerator<T> GetEnumerator()
-        {
+		}
+		public IEnumerator<T> GetEnumerator()
+		{
 			for (var i=0; i<_count;i++) {
 				yield return GetRaw(i);
 			}
 		}
 
 		public void Insert(int index, T item)
-        {
+		{
 			if (_count == 256) BoundsError();
 			_count += 1;
 			CheckBounds(index);
@@ -2515,7 +2515,7 @@ namespace OptimizedList
 				SetRaw(i, GetRaw(i-1));
 			}
 			SetRaw(index, item);
-        }
+		}
 		public bool Remove(T item) {
 			var idx = IndexOf(item);
 			if (idx == -1) return false;
@@ -2523,18 +2523,18 @@ namespace OptimizedList
 			return true;
 		}
 		public void RemoveAt(int index)
-        {
+		{
 			CheckBounds(index);
 			for (var i = index; i < _count; i++) {
 				SetRaw(i, GetRaw(i+1));
 			}
 			_count -= 1;
-        }
+		}
 
 		IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
+		{
+			return GetEnumerator();
+		}
 	}
 
 }
