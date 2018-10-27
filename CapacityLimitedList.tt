@@ -69,9 +69,8 @@ namespace OptimizedList
 		}
 		public void Add(T item)
         {
-			if (_count == <#=capacity#>) BoundsError();
+			if (_count >= <#=capacity#>) BoundsError();
 			var index = _count;
-			CheckBounds(index);
 			SetRaw(index, item);
 			_count += 1;
         }

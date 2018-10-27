@@ -4,4 +4,31 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="CapacityLimitedList.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CapacityLimitedList.tt</DependentUpon>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="CapacityLimitedList.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CapacityLimitedList.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="CapacityLimitedList.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CapacityLimitedList.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
 </Project>

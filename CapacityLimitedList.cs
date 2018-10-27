@@ -53,9 +53,8 @@ namespace OptimizedList
 		}
 		public void Add(T item)
         {
-			if (_count == 1) BoundsError();
+			if (_count >= 1) BoundsError();
 			var index = _count;
-			CheckBounds(index);
 			SetRaw(index, item);
 			_count += 1;
         }
@@ -171,9 +170,8 @@ namespace OptimizedList
 		}
 		public void Add(T item)
         {
-			if (_count == 2) BoundsError();
+			if (_count >= 2) BoundsError();
 			var index = _count;
-			CheckBounds(index);
 			SetRaw(index, item);
 			_count += 1;
         }
@@ -295,9 +293,8 @@ namespace OptimizedList
 		}
 		public void Add(T item)
         {
-			if (_count == 4) BoundsError();
+			if (_count >= 4) BoundsError();
 			var index = _count;
-			CheckBounds(index);
 			SetRaw(index, item);
 			_count += 1;
         }
@@ -431,9 +428,8 @@ namespace OptimizedList
 		}
 		public void Add(T item)
         {
-			if (_count == 8) BoundsError();
+			if (_count >= 8) BoundsError();
 			var index = _count;
-			CheckBounds(index);
 			SetRaw(index, item);
 			_count += 1;
         }
@@ -591,9 +587,8 @@ namespace OptimizedList
 		}
 		public void Add(T item)
         {
-			if (_count == 16) BoundsError();
+			if (_count >= 16) BoundsError();
 			var index = _count;
-			CheckBounds(index);
 			SetRaw(index, item);
 			_count += 1;
         }
@@ -799,9 +794,8 @@ namespace OptimizedList
 		}
 		public void Add(T item)
         {
-			if (_count == 32) BoundsError();
+			if (_count >= 32) BoundsError();
 			var index = _count;
-			CheckBounds(index);
 			SetRaw(index, item);
 			_count += 1;
         }
@@ -1103,9 +1097,8 @@ namespace OptimizedList
 		}
 		public void Add(T item)
         {
-			if (_count == 64) BoundsError();
+			if (_count >= 64) BoundsError();
 			var index = _count;
-			CheckBounds(index);
 			SetRaw(index, item);
 			_count += 1;
         }
@@ -1599,9 +1592,8 @@ namespace OptimizedList
 		}
 		public void Add(T item)
         {
-			if (_count == 128) BoundsError();
+			if (_count >= 128) BoundsError();
 			var index = _count;
-			CheckBounds(index);
 			SetRaw(index, item);
 			_count += 1;
         }
@@ -2479,9 +2471,8 @@ namespace OptimizedList
 		}
 		public void Add(T item)
         {
-			if (_count == 256) BoundsError();
+			if (_count >= 256) BoundsError();
 			var index = _count;
-			CheckBounds(index);
 			SetRaw(index, item);
 			_count += 1;
         }
