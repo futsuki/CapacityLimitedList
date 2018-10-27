@@ -1,0 +1,140 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+var counts = new []{1,2,4,8,16,32,64,128,256};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace OptimizedList
+{
+<# foreach (var capacity in counts) { #>
+	public struct CapacityLimitedList<#=capacity#><T> : IList<T> {
+		int _count;
+<# for (var i=0; i<capacity; i++) { #>
+		T _v<#=i#>;
+<# } #>
+
+		void BoundsError() {
+			throw new ArgumentOutOfRangeException();
+		}
+		void CheckBounds(int n) {
+			if (n < 0 || n >= _count) BoundsError();
+		}
+
+		T GetRaw(int index) {
+			switch (index) {
+<# for (var i=0; i<capacity; i++) { #>
+			case <#=i#>: return _v<#=i#>;
+<# } #>
+			default:
+				BoundsError(); return default(T);
+			}
+		}
+		void SetRaw(int index, T value) {
+			switch (index) {
+<# for (var i=0; i<capacity; i++) { #>
+			case <#=i#>: _v<#=i#> = value; return;
+<# } #>
+			default:
+				BoundsError(); return;
+			}
+		}
+
+		public T this[int index] {
+            get {
+				CheckBounds(index);
+				return GetRaw(index);
+            }
+            set {
+				CheckBounds(index);
+				SetRaw(index, value);
+            }
+        }
+
+		public int Count {
+			get {
+				return _count;
+			}
+		}
+		public bool IsReadOnly {
+			get {
+				return false;
+			}
+		}
+		public void Add(T item)
+        {
+			if (_count == <#=capacity#>) BoundsError();
+			var index = _count;
+			CheckBounds(index);
+			SetRaw(index, item);
+			_count += 1;
+        }
+		public void Clear()
+        {
+			_count = 0;
+        }
+		public bool Contains(T item)
+		{
+			return IndexOf(item) != -1;
+		}
+		public int IndexOf(T item)
+		{
+			var e = EqualityComparer<T>.Default;
+			for (var i=0; i<_count; i++) {
+				if (e.Equals(GetRaw(i), item))
+					return i;
+			}
+			return -1;
+		}
+		public void CopyTo(T[] array, int arrayIndex)
+        {
+			for (var i=0; i<_count;i++) {
+				array[arrayIndex + i] = GetRaw(i);
+			}
+        }
+        public IEnumerator<T> GetEnumerator()
+        {
+			for (var i=0; i<_count;i++) {
+				yield return GetRaw(i);
+			}
+		}
+
+		public void Insert(int index, T item)
+        {
+			if (_count == <#=capacity#>) BoundsError();
+			_count += 1;
+			CheckBounds(index);
+			for (var i = _count-1; i > index; i--) {
+				SetRaw(i, GetRaw(i-1));
+			}
+			SetRaw(index, item);
+        }
+		public bool Remove(T item) {
+			var idx = IndexOf(item);
+			if (idx == -1) return false;
+			RemoveAt(idx);
+			return true;
+		}
+		public void RemoveAt(int index)
+        {
+			CheckBounds(index);
+			for (var i = index; i < _count; i++) {
+				SetRaw(i, GetRaw(i+1));
+			}
+			_count -= 1;
+        }
+
+		IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+	}
+<# } #>
+
+}
